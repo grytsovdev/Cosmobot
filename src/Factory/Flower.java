@@ -11,6 +11,11 @@ public class Flower implements Plant{
     }
 
     @Override
+    public String getName() {
+        return this.name;
+    }
+
+    @Override
     public void show() {
         System.out.println("A new flower named " + name + " is growing. Color: " + color);
     }

@@ -10,6 +10,11 @@ public class PlantDecorator implements Plant {
     }
 
     @Override
+    public String getName() {
+        return decoratedPlant.getName();
+    }
+
+    @Override
     public void show() {
         decoratedPlant.show();
         showAdditionalInfo();

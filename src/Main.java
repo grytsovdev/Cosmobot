@@ -6,6 +6,7 @@ import Decorator.HeightDecorator;
 import Decorator.InfoDecorator;
 import Factory.Plant;
 import Factory.PlantFactory;
+import Observer.PlantCareTaker;
 import Proxy.TourProxy;
 import Singleton.BotanicalGarden;
 
@@ -16,6 +17,8 @@ import java.util.Date;
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
+        PlantCareTaker careTaker1 = new PlantCareTaker("John");
+        careTaker1.startMonitoring();
         PlantFactory factory = new PlantFactory();
         Plant tree = factory.createPlant("tree", "Oak", "Green");
         tree.show();
@@ -55,6 +58,7 @@ public class Main {
         } catch (SecurityException e) {
             System.out.println("Error: " + e.getMessage());
         }
+        careTaker1.stopMonitoring();
     }
 
-    }
+}

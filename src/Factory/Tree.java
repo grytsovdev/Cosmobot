@@ -10,6 +10,11 @@ public class Tree implements Plant{
     }
 
     @Override
+    public String getName() {
+        return this.name;
+    }
+
+    @Override
     public void show() {
         System.out.println("A new tree named " + name + " is growing. Color: " + color);
     }
