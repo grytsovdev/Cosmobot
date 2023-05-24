@@ -8,3 +8,4 @@ public interface Builder {
 
     void setDate(String date);
 }
+

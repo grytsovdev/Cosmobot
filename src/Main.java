@@ -1,8 +1,12 @@
 
 
+import Builder.Tour;
 import Builder.TourBuilder;
+import Decorator.HeightDecorator;
+import Decorator.InfoDecorator;
 import Factory.Plant;
 import Factory.PlantFactory;
+import Proxy.TourProxy;
 import Singleton.BotanicalGarden;
 
 import java.util.Arrays;
@@ -17,6 +21,8 @@ public class Main {
         tree.show();
 
         Plant flower = factory.createPlant("flower", "Rose", "Red");
+        flower = new HeightDecorator(flower, 20);
+        flower = new InfoDecorator(flower, "Perennial");
         flower.show();
 
        TourBuilder builder = new TourBuilder();
@@ -34,5 +40,21 @@ public class Main {
         graden1.getPlants().forEach(Plant::show);
         graden2.getPlants().forEach(Plant::show);
 
+        String adminPassword = "admin123";
+        String userPassword = "user456";
+
+        TourProxy tourProxy = new TourProxy(adminPassword);
+        tourProxy.setGuideName("John Doe");
+        tourProxy.setPrice(100.0);
+        tourProxy.setNumberOfPeople(5);
+        tourProxy.setDate("2023-06-01");
+
+        try {
+            Tour tour = tourProxy.createTour(adminPassword);
+            System.out.println("New tour created: " + tour.toString());
+        } catch (SecurityException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
-}
+
+    }
