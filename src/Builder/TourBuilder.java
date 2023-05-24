@@ -25,10 +25,6 @@ public class TourBuilder implements Builder {
         this.numberOfPeople = number;
     }
 
-    @Override
-    public void setDate(String date) {
-        this.date = date;
-    }
     public Tour getResult(){
         return  new Tour(guideName,date,numberOfPeople,price);
     }

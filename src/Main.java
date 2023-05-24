@@ -1,6 +1,7 @@
 
 
 import Builder.TourBuilder;
+import Builder.TourDirector;
 import Factory.Plant;
 import Factory.PlantFactory;
 import Singleton.BotanicalGarden;
@@ -19,10 +20,9 @@ public class Main {
         Plant flower = factory.createPlant("flower", "Rose", "Red");
         flower.show();
 
-       TourBuilder builder = new TourBuilder();
-       builder.setGuideName("Hello");
-       builder.setNumberOfPeople(12);
-       builder.setDate("12-06-2023");
+        TourDirector director = new TourDirector();
+        TourBuilder builder = new TourBuilder();
+        director.createBigTour(builder);
         System.out.println(builder.getResult());
 
         BotanicalGarden graden1 = BotanicalGarden.getInstance();

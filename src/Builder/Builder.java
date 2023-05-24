@@ -6,5 +6,4 @@ public interface Builder {
 
     void setNumberOfPeople(int number);
 
-    void setDate(String date);
 }
