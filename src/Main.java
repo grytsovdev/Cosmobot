@@ -1,33 +1,25 @@
 
 
-import Builder.Tour;
-import Builder.TourBuilder;
-
 import Builder.TourDirector;
 import Decorator.HeightDecorator;
 import Decorator.InfoDecorator;
+import Factory.Flower;
+import Factory.FlowerFactory;
 import Factory.Plant;
-import Factory.PlantFactory;
+import Factory.TreeFactory;
 import Observer.PlantCareTaker;
-import Proxy.TourProxy;
 import Singleton.BotanicalGarden;
-
-import java.util.Arrays;
-import java.util.Date;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        PlantCareTaker careTaker1 = new PlantCareTaker("John");
-        careTaker1.startMonitoring();
-        PlantFactory factory = new PlantFactory();
-        Plant tree = factory.createPlant("tree", "Oak", "Green");
-        tree.show();
 
-        Plant flower = factory.createPlant("flower", "Rose", "Red");
-        flower = new HeightDecorator(flower, 20);
-        flower = new InfoDecorator(flower, "Perennial");
+        TreeFactory treeFactoryactory = new TreeFactory();
+        Plant tree = treeFactoryactory.createPlant( "Oak", "Green");
+        tree.show();
+        FlowerFactory  flowerFactory = new FlowerFactory();
+        Plant flower = flowerFactory.createPlant("Rose", "Red");
         flower.show();
 
         TourDirector director = new TourDirector();
@@ -44,12 +36,10 @@ public class Main {
         graden1.getPlants().forEach(Plant::show);
         graden2.getPlants().forEach(Plant::show);
 
-        String adminPassword = "admin123";
-        String userPassword = "user456";
 
-        director.createBigTour(adminPassword);
 
-        careTaker1.stopMonitoring();
+
+
     }
 
 }
