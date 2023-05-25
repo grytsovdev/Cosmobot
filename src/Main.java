@@ -1,5 +1,6 @@
 
 
+import Builder.Tour;
 import Builder.TourDirector;
 import Decorator.HeightDecorator;
 import Decorator.InfoDecorator;
@@ -8,6 +9,7 @@ import Factory.FlowerFactory;
 import Factory.Plant;
 import Factory.TreeFactory;
 import Observer.PlantCareTaker;
+import Proxy.TourProxy;
 import Singleton.BotanicalGarden;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
@@ -20,9 +22,24 @@ public class Main {
         tree.show();
         FlowerFactory  flowerFactory = new FlowerFactory();
         Plant flower = flowerFactory.createPlant("Rose", "Red");
+        System.out.println("Flower");
+        flower.show();
+        flower = new HeightDecorator(flower,15);
+        flower = new InfoDecorator(flower,"Has bad smell");
+        System.out.println("Decorated Flower");
         flower.show();
 
-//        TourDirector director = new TourDirector();
+        TourDirector director = new TourDirector();
+        TourProxy tourProxy = new TourProxy("1234");
+        director.createBigTour(tourProxy);
+
+        try {
+            Tour tour = tourProxy.createTour("1234");
+            System.out.println("New tour created: " + tour.toString());
+        } catch (SecurityException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
 //
 //
 //
