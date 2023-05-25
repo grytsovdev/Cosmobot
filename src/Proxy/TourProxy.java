@@ -3,10 +3,13 @@ package Proxy;
 import Builder.Builder;
 import Builder.Tour;
 import Builder.TourBuilder;
+import Strategy.PriceCalculationStrategy;
 
 public class TourProxy implements Builder {
     private final String adminPassword;
     private final TourBuilder tourBuilder;
+
+
 
     public TourProxy(String adminPassword) {
         this.adminPassword = adminPassword;
@@ -28,10 +31,12 @@ public class TourProxy implements Builder {
         tourBuilder.setNumberOfPeople(number);
     }
 
-    @Override
-    public void setDate(String date) {
-        tourBuilder.setDate(date);
+
+    public void setStrategy(PriceCalculationStrategy strategy){
+        tourBuilder.setStrategy(strategy);
     }
+
+
 
     public Tour createTour(String password) {
         if (password.equals(adminPassword)) {

@@ -2,6 +2,8 @@
 
 import Builder.Tour;
 import Builder.TourBuilder;
+
+import Builder.TourDirector;
 import Decorator.HeightDecorator;
 import Decorator.InfoDecorator;
 import Factory.Plant;
@@ -28,11 +30,10 @@ public class Main {
         flower = new InfoDecorator(flower, "Perennial");
         flower.show();
 
-       TourBuilder builder = new TourBuilder();
-       builder.setGuideName("Hello");
-       builder.setNumberOfPeople(12);
-       builder.setDate("12-06-2023");
-        System.out.println(builder.getResult());
+        TourDirector director = new TourDirector();
+
+
+
 
         BotanicalGarden graden1 = BotanicalGarden.getInstance();
         BotanicalGarden graden2 = BotanicalGarden.getInstance();
@@ -46,18 +47,8 @@ public class Main {
         String adminPassword = "admin123";
         String userPassword = "user456";
 
-        TourProxy tourProxy = new TourProxy(adminPassword);
-        tourProxy.setGuideName("John Doe");
-        tourProxy.setPrice(100.0);
-        tourProxy.setNumberOfPeople(5);
-        tourProxy.setDate("2023-06-01");
+        director.createBigTour(adminPassword);
 
-        try {
-            Tour tour = tourProxy.createTour(adminPassword);
-            System.out.println("New tour created: " + tour.toString());
-        } catch (SecurityException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
         careTaker1.stopMonitoring();
     }
 

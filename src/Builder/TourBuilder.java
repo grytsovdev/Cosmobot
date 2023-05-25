@@ -1,13 +1,17 @@
 package Builder;
 
+import Strategy.PriceCalculationStrategy;
+
 public class TourBuilder implements Builder {
     private   String guideName;
 
-    private  String date;
+
 
     private  int numberOfPeople;
 
     private  double price;
+
+    private PriceCalculationStrategy strategy;
 
 
     @Override
@@ -25,11 +29,12 @@ public class TourBuilder implements Builder {
         this.numberOfPeople = number;
     }
 
-    @Override
-    public void setDate(String date) {
-        this.date = date;
+    public  void setStrategy(PriceCalculationStrategy strategy){
+        this.strategy=strategy;
+
     }
+
     public Tour getResult(){
-        return  new Tour(guideName,date,numberOfPeople,price);
+        return  new Tour(guideName,numberOfPeople,price,strategy);
     }
 }
