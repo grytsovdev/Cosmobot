@@ -22,21 +22,21 @@ public class Main {
         Plant flower = flowerFactory.createPlant("Rose", "Red");
         flower.show();
 
-        TourDirector director = new TourDirector();
-
-
-
-
-        BotanicalGarden graden1 = BotanicalGarden.getInstance();
-        BotanicalGarden graden2 = BotanicalGarden.getInstance();
-
-        graden1.addPlant(tree);
-        graden2.addPlant(flower);
-
-        graden1.getPlants().forEach(Plant::show);
-        graden2.getPlants().forEach(Plant::show);
-
-
+//        TourDirector director = new TourDirector();
+//
+//
+//
+//
+//        BotanicalGarden graden1 = BotanicalGarden.getInstance();
+//        BotanicalGarden graden2 = BotanicalGarden.getInstance();
+//
+//        graden1.addPlant(tree);
+//        graden2.addPlant(flower);
+//
+//        graden1.getPlants().forEach(Plant::show);
+//        graden2.getPlants().forEach(Plant::show);
+//
+//
 
 
 
