@@ -4,10 +4,7 @@ import Builder.Tour;
 import Builder.TourDirector;
 import Decorator.HeightDecorator;
 import Decorator.InfoDecorator;
-import Factory.Flower;
-import Factory.FlowerFactory;
-import Factory.Plant;
-import Factory.TreeFactory;
+import Factory.*;
 import Observer.PlantCareTaker;
 import Proxy.TourProxy;
 import Singleton.BotanicalGarden;
@@ -16,7 +13,9 @@ import Singleton.BotanicalGarden;
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
+        Factory factory;
 
+        String plantType = "flower";
         TreeFactory treeFactoryactory = new TreeFactory();
         Plant tree = treeFactoryactory.createPlant( "Oak", "Green");
         tree.show();
@@ -24,23 +23,34 @@ public class Main {
         Plant flower = flowerFactory.createPlant("Rose", "Red");
         System.out.println("Flower");
         flower.show();
-        flower = new HeightDecorator(flower,15);
-        flower = new InfoDecorator(flower,"Has bad smell");
-        System.out.println("Decorated Flower");
-        flower.show();
 
-        TourDirector director = new TourDirector();
-        TourProxy tourProxy = new TourProxy("1234");
-        director.createBigTour(tourProxy);
+        if(plantType.contains("flower")){
+            factory = new FlowerFactory();
+        }else
+        {factory = new TreeFactory();}
 
-        try {
-            Tour tour = tourProxy.createTour("1234");
-            System.out.println("New tour created: " + tour.toString());
-        } catch (SecurityException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
 
+       Plant custom =  factory.createPlant("FlowerOrTree","GreenToRed");
+        custom.show();
+
+
+//        flower = new HeightDecorator(flower,15);
+//        flower = new InfoDecorator(flower,"Has bad smell");
+//        System.out.println("Decorated Flower");
+//        flower.show();
 //
+//        TourDirector director = new TourDirector();
+//        TourProxy tourProxy = new TourProxy("1234");
+//        director.createBigTour(tourProxy);
+//
+//        try {
+//            Tour tour = tourProxy.createTour("1234");
+//            System.out.println("New tour created: " + tour.toString());
+//        } catch (SecurityException e) {
+//            System.out.println("Error: " + e.getMessage());
+//        }
+//
+////
 //
 //
 //
