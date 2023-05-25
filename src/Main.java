@@ -31,7 +31,9 @@ public class Main {
         graden1.addPlant(tree);
         graden2.addPlant(flower);
 
+        System.out.println("Garden1:");
         graden1.getPlants().forEach(Plant::show);
+        System.out.println("Garden2:");
         graden2.getPlants().forEach(Plant::show);
 
     }
