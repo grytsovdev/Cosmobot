@@ -4,8 +4,10 @@ import Builder.Tour;
 import Builder.TourDirector;
 import Decorator.HeightDecorator;
 import Decorator.InfoDecorator;
+import Facade.PlantFacade;
 import Factory.*;
 import Observer.PlantCareTaker;
+import Proxy.FacadeProxy;
 import Proxy.TourProxy;
 import Singleton.BotanicalGarden;
 
@@ -13,15 +15,18 @@ import Singleton.BotanicalGarden;
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
+
+        FacadeProxy facade = new FacadeProxy("1234");
+        facade.login("1234");
+        facade.createMagicTree("hi","hi");
         Factory factory;
 
         String plantType = "flower";
-        TreeFactory treeFactoryactory = new TreeFactory();
-        BranchFactory branchFactory = new BranchFactory();
-        CompositePlant tree = treeFactoryactory.createPlant( "Oak", "Green");
-        Plant branch = branchFactory.createPlant("aple","yellow");
 
-        tree.addChild(branch);
+        BranchFactory branchFactory = new BranchFactory();
+        Plant branch = branchFactory.createPlant("aple","yellow");
+        CompositePlant tree = facade.createMagicTree( "Oak", "Green",branch);
+
         tree.show();
 
         FlowerFactory  flowerFactory = new FlowerFactory();
@@ -39,10 +44,10 @@ public class Main {
         custom.show();
 
 
-//        flower = new HeightDecorator(flower,15);
-//        flower = new InfoDecorator(flower,"Has bad smell");
-//        System.out.println("Decorated Flower");
-//        flower.show();
+        flower = facade.decoratePlantHeight(flower,15);
+        flower = new InfoDecorator(flower,"Has bad smell");
+        System.out.println("Decorated Flower");
+        flower.show();
 //
 //        TourDirector director = new TourDirector();
 //        TourProxy tourProxy = new TourProxy("1234");
