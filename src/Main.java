@@ -17,8 +17,13 @@ public class Main {
 
         String plantType = "flower";
         TreeFactory treeFactoryactory = new TreeFactory();
-        Plant tree = treeFactoryactory.createPlant( "Oak", "Green");
+        BranchFactory branchFactory = new BranchFactory();
+        CompositePlant tree = treeFactoryactory.createPlant( "Oak", "Green");
+        Plant branch = branchFactory.createPlant("aple","yellow");
+
+        tree.addChild(branch);
         tree.show();
+
         FlowerFactory  flowerFactory = new FlowerFactory();
         Plant flower = flowerFactory.createPlant("Rose", "Red");
         System.out.println("Flower");
